@@ -2,6 +2,10 @@ package levelsetTests;
 
 import baseMethods.BrowserSetup;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Description;
+import io.qameta.allure.Link;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.apache.commons.io.FileUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -72,6 +76,9 @@ public class TestLevelset {
     }
 
     @Test(dataProvider = "dataReader")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Select Document Test Case")
+    @Link(name = "Levelset Website Select Document Page", url = "https://app.levelset.com/wizard/SelectDocument")
     public void TestDocuments(String data) throws IOException {
 
         String dataTest[] = data.split(" , ");
