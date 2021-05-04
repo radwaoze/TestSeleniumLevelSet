@@ -2,16 +2,21 @@ package levelsetTests;
 
 import baseMethods.BrowserSetup;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.io.FileUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 import uiActions.CreateDocument;
 import uiActions.HomePage;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -67,7 +72,7 @@ public class TestLevelset {
     }
 
     @Test(dataProvider = "dataReader")
-    public void test1(String data) throws IOException {
+    public void TestDocuments(String data) throws IOException {
 
         String dataTest[] = data.split(" , ");
 
@@ -103,10 +108,14 @@ public class TestLevelset {
 	  homePage.navigateToHome("https://www.levelset.com/" , "//h1[text()='Get paid faster.']");
 	  homePage.selectCreateDoc();
   }*/
-
-
-    @AfterMethod
-    public void afterMethod() {
+  @AfterMethod
+  public void afterMethod(ITestResult result) throws IOException {
+      if(ITestResult.FAILURE == result.getStatus())
+      {
+          TakesScreenshot ts = (TakesScreenshot) driver;
+          File source = ts.getScreenshotAs(OutputType.FILE);
+          FileUtils.copyFile(source, new File("./screenshot/" + result.getName()+".png"));
+      }
         BrowserSetup.closeBrowser();
     }
 
