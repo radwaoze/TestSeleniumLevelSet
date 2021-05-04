@@ -1,0 +1,30 @@
+{
+  "DataReader":
+  [
+    {
+      "freePath" : "//div[text()='20-Day Preliminary Notice']/..//span[text()='Free']",
+      "expectResult" : "Free",
+      "fClickPath" : "//div[contains(@class,'product-title-container card-header')]//div[text()='20-Day Preliminary Notice']" ,
+      "titlePath" : "//div[@class='document-general-type-info']//div[@class='title']",
+      "titleExpected" :"20-Day Preliminary Notice"
+    },
+
+    {
+      "freePath" : "//div[text()='Lien / Bond Claim']/..//span[text()='$349']",
+      "expectResult" : "$349",
+      "fClickPath" : "//div[contains(@class,'product-title-container card-header')]//div[text()='Lien / Bond Claim']" ,
+      "titlePath" : "//div[@class='document-general-type-info']//div[@class='title']",
+      "titleExpected" :"Lien / Bond Claim"
+    },
+
+    {
+      "freePath" : "//div[text()='Lien Waiver']/..//span[text()='Free']",
+      "expectResult" : "Free",
+      "fClickPath" : "//div[contains(@class,'product-title-container card-header')]//div[text()='Lien Waiver']" ,
+      "titlePath" : "//div[@class='document-general-type-info']//div[@class='title']",
+      "titleExpected" :"Lien Waiver"
+    }
+
+  ]
+
+}
